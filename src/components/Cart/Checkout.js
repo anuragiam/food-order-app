@@ -27,7 +27,7 @@ const Checkout = (props) => {
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
-    const enteredPostalIsValid = !isFiveChars(enteredPostal);
+    const enteredPostalIsValid = isFiveChars(enteredPostal);
     const enteredCityIsValid = !isEmpty(enteredCity);
 
     setFormInputsValidity({
@@ -76,12 +76,12 @@ const Checkout = (props) => {
       </div>
       <div
         className={`${classes.control} ${
-          formInputValidity.postal ? classes.invalid:""
+          formInputValidity.postal ? "":classes.invalid
         }`}
       >
         <label htmlFor="postal">Postal Code</label>
         <input ref={postalInputRef} type="text" id="postal" />
-        {formInputValidity.postal && (
+        {!formInputValidity.postal && (
           <p>PLease entere a valid postal code!(5 characters long)</p>
         )}
       </div>
